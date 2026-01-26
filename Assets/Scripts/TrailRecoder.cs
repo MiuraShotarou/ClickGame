@@ -28,10 +28,12 @@ public class TrailRecoder : MonoBehaviour
             {
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+                Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
                 // 自分自身がヒットしているなら → 追記する必要あり
-                if (Physics.Raycast(ray, out hit))
+                if (Physics2D.Raycast(ray.origin, ray.direction))
                 {
-                    Debug.Log("当たった: " + hit.collider.name);
+                    Debug.Log("当たった: "); //あんまりよろしいやり方ではないな
+                    // Hierarchy で選択されているオブジェクトを取得し、それの軌跡を記録するほうが良いか？
                 }
             }
         }
