@@ -203,7 +203,7 @@ Transform:
   m_GameObject: {fileID: 32079197}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.29, y: -2.49, z: 0}
+  m_LocalPosition: {x: -2.1, y: -3.6, z: 5.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -243,6 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8881c3997f71b8543ba8b8018fa45939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animationClip: {fileID: 0}
+  _endFlame: 50
 --- !u!60 &32079202
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -761,7 +763,7 @@ Transform:
   m_GameObject: {fileID: 560094084}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.83, y: 0, z: 0}
+  m_LocalPosition: {x: -4.57, y: 1.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1500,6 +1502,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1928120807}
   - component: {fileID: 1928120806}
+  - component: {fileID: 1928120809}
+  - component: {fileID: 1928120808}
   m_Layer: 0
   m_Name: Moth
   m_TagString: Untagged
@@ -1577,6 +1581,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1928120808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928120805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8881c3997f71b8543ba8b8018fa45939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationClip: {fileID: 0}
+  _endFlame: 0
+--- !u!95 &1928120809
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928120805}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2071376926
 GameObject:
   m_ObjectHideFlags: 0
