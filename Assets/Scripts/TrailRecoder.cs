@@ -40,7 +40,7 @@ public class TrailRecoder : MonoBehaviour
     {
         if (!Application.isPlaying) //エディタ環境なら → 実行中の処理負荷防止
         {
-            bool isOnViewDragging = Event.current.type == EventType.MouseDrag && Event.current.button == 0; //SceneView上で左クリックボタンが押されたうえでマウスが動いたなら
+            bool isOnViewDragging = UnityEngine.Event.current.type == EventType.MouseDrag && UnityEngine.Event.current.button == 0; //SceneView上で左クリックボタンが押されたうえでマウスが動いたなら
             // ドラッグ操作判定
             if (isOnViewDragging
                 &&
