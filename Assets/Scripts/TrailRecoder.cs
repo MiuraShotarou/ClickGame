@@ -28,6 +28,9 @@ public class TrailRecoder : MonoBehaviour
         SceneView.duringSceneGui += OnSceneGUI;
         _isBeforePressed = false;
         _endFlame = 0; //OnEnableで不具合が起きるようであれば、EditorUpdate内で !Selection.activeGameObject == gameObject のとき初期化をしても良い
+        Debug.Log(Mathf.PerlinNoise(1, 10)); //
+        Debug.Log(Mathf.PerlinNoise(1.1f, 10)); //
+        Debug.Log(Mathf.PerlinNoise(1.2f, 10)); //
     }
     void OnDisable()
     {
@@ -61,6 +64,7 @@ public class TrailRecoder : MonoBehaviour
                 if (!_animationClip) //animClip
                 {
                     Debug.LogWarning("AnimationClipがセットされていません");
+                    _posQueue.Clear();
                 }
                 else
                 {
@@ -72,11 +76,6 @@ public class TrailRecoder : MonoBehaviour
             }
             _isBeforePressed = Mouse.current.leftButton.isPressed;
         }
-    }
-    // 
-    void EditorUpdate()
-    {
-
     }
     //エディタ画面でドラッグ操作を終了した時に一度だけ呼び出される。
     void CreateKeyFrame()
