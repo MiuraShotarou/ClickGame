@@ -14,6 +14,8 @@ public class ObjectManager : MonoBehaviour
     [SerializeField] public GameObject MothObj600;
     [SerializeField] public GameObject MothObj700;
     //GameObject
+    [SerializeField] public GameObject P_RuleObj;
+    [SerializeField] public GameObject T_ReadyObj;
     [SerializeField] public GameObject T_TimeUpObj;
     [SerializeField] public GameObject T_Wave;
     [SerializeField] public GameObject T_WaveCount;
@@ -40,9 +42,11 @@ public class ObjectManager : MonoBehaviour
     }
     void Init()
     {
-        T_TimeUpObj.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 0);
-        T_Wave.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 0);
-        T_WaveCount.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 0);
-        T_WaveStart.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 0);
+        P_RuleObj.SetActive(true);
+        T_ReadyObj.SetActive(true);      T_ReadyObj.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 0);
+        T_TimeUpObj.SetActive(true);    T_TimeUpObj.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 0);
+        T_Wave.SetActive(true);          T_Wave.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 0);
+        T_WaveCount.SetActive(true);     T_WaveCount.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 0);
+        T_WaveStart.SetActive(true);     T_WaveStart.GetComponent<TextMeshProUGUI>().color = new Color(1, 1, 1, 0);
     }
 }

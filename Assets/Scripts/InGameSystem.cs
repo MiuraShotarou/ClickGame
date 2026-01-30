@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 public class InGameSystem : MonoBehaviour
 {
@@ -13,23 +12,26 @@ public class InGameSystem : MonoBehaviour
     GameObject MothObj700;
     State _currentState = State.None;
     int _currentWave = 0;
+    int _frameCounter = 0;
     int _CurrentWave {get => _currentWave; set {if (value > 3) { Debug.LogError("Wave値が4以上"); } _currentWave = value; }}
     void Update()
     {
-        float timer = Time.time;
-        if (timer > 60f)
-        {
-            _currentWave = (int)_currentState;
-            _currentState = State.WaveEnd; //60秒経ったらWaitModeに入る → 現在のウェーブ数が何であるかはどこで管理すれば良いというのか①Textクラスで管理する②内部保持
-        }
         switch (_currentState)
         {
-            case State.WaveEnd:
-                ObjectManager.Instance.GameEvent.TimeUp();
-                ObjectManager.Instance.GameEvent.ShowWaveUI();
+            case State.Rule:
+                ObjectManager.Instance.GameEvent.ActiveRulePanel();
                 _currentState = State.None;
                 break;
-            case State.WaveOne: //_currentWaveはTimeで管理する必要がある
+            case State.InWave:
+                _frameCounter = Time.frameCount;
+                if (_frameCounter > 60 * 60) //60fps * 60Sec == iMin
+                {
+                    _currentWave = (int)_currentState;
+                    _currentState = State.WaveEnd; //60秒経ったらWaitModeに入る
+                    _frameCounter = 0; //_frameCounterをリセット
+                }
+                break;
+            case State.WaveOne:
                 WaveOne(); //Timer始動
                 break;
             case State.WaveTwo:
@@ -37,6 +39,11 @@ public class InGameSystem : MonoBehaviour
                 break;
             case State.WaveThree:
                 WaveThree();
+                break;
+            case State.WaveEnd:
+                ObjectManager.Instance.GameEvent.TimeUp();
+                ObjectManager.Instance.GameEvent.ShowWaveUI();
+                _currentState = State.None;
                 break;
         }
         // Debug.Log(_currentState);
@@ -46,6 +53,10 @@ public class InGameSystem : MonoBehaviour
     void WaveOne()
     {
         Debug.Log("WaveOneになったお");
+        //基本的なシステム → _timerに従って的を出す順番を決める。
+        //しかし、実行するたびに誤差が出てしまう。これはフェアじゃない。
+        //フレーム単位で出せるようにしたいな。
+        
         // FlyObj600.transform.Translate();
         //横サインカーブ * 10
         //横一直線 * 1
@@ -72,6 +83,7 @@ public enum State
     WaveOne,
     WaveTwo,
     WaveThree,
+    Rule,
+    InWave,
     WaveEnd,
-    Interval,
 }
